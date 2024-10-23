@@ -1,28 +1,15 @@
-IMAGE_NAME = inception_image
-CONTAINER_NAME = inception
-
-.PHONY: build nocache up buildup down ps
-
-# Dockerイメージをビルドする
-build:
-	docker build -t $(IMAGE_NAME) .
-
-nocache:
-	docker build --no-cache -t $(IMAGE_NAME) .
-	up
-
-# コンテナをバックグラウンドで起動する
+# コンテナをビルドし、バックグラウンドで起動。変更がある場合は再ビルド
 up:
-	docker run -d --name $(CONTAINER_NAME) $(IMAGE_NAME)
-
-# buildとupをまとめる
-buildup: build up
-
-# コンテナを停止して削除する
+	docker compose up -d --build
+# すべてのコンテナを停止し、ネットワークやボリュームを削除
 down:
-	docker stop $(CONTAINER_NAME)
-	docker rm $(CONTAINER_NAME)
-
-# コンテナのステータスを表示する
-ps:
-	docker ps -a
+	docker compose down
+# コンテナが動作し続ける限りログの出力を継続する
+log:
+	docker compose logs -f
+# コンテナ、イメージ、ボリュームを全て削除
+clean:
+	docker compose down --rmi all -v
+# 実行中のコンテナを再起動する
+restart:
+	docker compose restart
