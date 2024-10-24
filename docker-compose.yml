@@ -1,25 +1,11 @@
 name: inception
 
-services: # アプリケーションを構築する各サービス
+services:
   nginx:
-    build:
-      context: ./srcs/nginx
-    # volumes:
-    #   - ./srcs/html:/var/www/html
-    ports: # コンテナ内のポートをホストに公開する
-      - "8080:80" # ホストのポート8080をコンテナ内のポート80にマッピングする
+    build: ./srcs/nginx
+    ports:
+      - "8080:80"
     depends_on:
       - php-fpm
-    networks:
-      - backend
   php-fpm:
-    build:
-      context: ./srcs/php
-    # volumes:
-    #   - ./srcs/html:/var/www/html
-    networks:
-      - backend
-
-networks:
-  backend:
-    driver: bridge
+    build: ./srcs/php
