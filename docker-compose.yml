@@ -2,11 +2,24 @@ name: inception
 
 services: # アプリケーションを構築する各サービス
   nginx:
-    build: .
+    build:
+      context: ./srcs/nginx
+    # volumes:
+    #   - ./srcs/html:/var/www/html
     ports: # コンテナ内のポートをホストに公開する
-      - "8080:80" # ホストのポート443をコンテナ内のポート443にマッピングする
-    volumes:
-      - ./srcs/nginx:/etc/nginx # nginxをコンテナにマウント
-      #php-wordpress:
-      #images: php # イメージからコンテナを起動するための方法がわからない
-    # phpのポート番号がわからない
+      - "8080:80" # ホストのポート8080をコンテナ内のポート80にマッピングする
+    depends_on:
+      - php-fpm
+    networks:
+      - backend
+  php-fpm:
+    build:
+      context: ./srcs/php
+    # volumes:
+    #   - ./srcs/html:/var/www/html
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
