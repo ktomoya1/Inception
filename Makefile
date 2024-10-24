@@ -12,9 +12,6 @@ re: down up
 log:
 	docker compose logs -f
 
-exec:
-	docker exec -it inception-php-fpm bash
-
 ps:
 	docker ps
 
