@@ -1,6 +1,7 @@
 FROM debian:bullseye
 
-RUN apt-get update && apt-get install -y php7.4-fpm
+RUN apt-get update && apt-get install -y php-fpm php-mysql
+RUN apt-get update && apt-get install -y wget unzip && rm -rf /var/lib/apt/lists/*
 
 # php7.4-fpmは/run/phpを作らない
 RUN mkdir -p /run/php 

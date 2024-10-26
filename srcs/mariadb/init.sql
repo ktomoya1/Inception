@@ -1,0 +1,8 @@
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE IF NOT EXISTS my_database;
+
+CREATE USER IF NOT EXISTS 'mysql'@'%' IDENTIFIED BY 'mysql';
+GRANT ALL PRIVILEGES ON my_database.* TO 'mysql'@'%';
+FLUSH PRIVILEGES;
