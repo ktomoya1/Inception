@@ -13,8 +13,8 @@ down:
 execn:
 	docker exec -it nginx bash
 
-execp:
-	docker exec -it php bash
+execw:
+	docker exec -it wp-php bash
 
 execm:
 	docker exec -it mariadb bash
