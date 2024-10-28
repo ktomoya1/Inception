@@ -7,7 +7,6 @@ RUN mkdir -p /var/run/mysqld /docker-entrypoint-initdb.d \
 COPY ./my.cnf /etc/mysql/my.cnf
 COPY ./init_db.sh /init_db.sh
 
-# RUN mysql_install_db --datadir=/var/lib/mysql --user=root
 RUN chmod +x /init_db.sh
 
 ENTRYPOINT [ "/init_db.sh" ]
