@@ -6,52 +6,51 @@ services:
     build: ./srcs/requirements/nginx
     ports:
       - "8080:80"
-    # depends_on:
-    #   - wp-php
-    # networks:
-    #   - my_network
-    # volumes:
-    #   - ./srcs/requirements/wordpress:/var/www/html
+    depends_on:
+      - wp-php
+    networks:
+      - my_network
+    volumes:
+      - ./srcs/requirements/wordpress:/var/www/html
 
-  # wp-php:
-  #   container_name: wp-php
-  #   build: ./srcs/requirements/wp-php
-  #   depends_on:
-  #     - mariadb
-  #   networks:
-  #     - my_network
-  #   environment:
-  #     - DB_USER=mysql
-  #     - DB_PASSWORD=mysql
-  #     - DB_NAME=wordpress
-  #     - DB_HOST=mariadb
-  #     - SITE_URL=localhost
-  #     - ADMIN_USER=ktomoya
-  #     - ADMIN_PASSWORD=ktomoya
-  #     - ADMIN_EMAIL=twbtomoya2@gmail.com
-  #   volumes:
-  #     - ./srcs/requirements/wordpress:/var/www/html
+  wp-php:
+    container_name: wp-php
+    build: ./srcs/requirements/wp-php
+    depends_on:
+      - mariadb
+    networks:
+      - my_network
+    environment:
+      - DB_USER=ktomoya
+      - DB_PASSWORD=ktomoya
+      - DB_NAME=wordpress
+      - DB_HOST=mariadb
+      - SITE_URL=localhost
+      - ADMIN_USER=ktomoya
+      - ADMIN_PASSWORD=ktomoya
+      - ADMIN_EMAIL=twbtomoya2@gmail.com
+    volumes:
+      - ./srcs/requirements/wordpress:/var/www/html
 
-  # mariadb:
-  #   container_name: mariadb
-  #   build: ./srcs/requirements/mariadb
-  #   ports:
-  #     - "3306:3306"
-  #   networks:
-  #     - my_network
-  #   environment:
-  #     - MYSQL_ROOT_HOST=root
-  #     - MYSQL_ROOT_PASSWORD=root
-  #     - MYSQL_DATABASE=wordpress
-  #     - MYSQL_USER=mysql
-  #     - MYSQL_PASSWORD=mysql
-  #   volumes:
-  #     - ./srcs/requirements/mariadb/database:/var/lib/mysql
-    # healthcheck:
-    #   test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-    #   interval: 10s
-    #   timeout: 5s
-    #   retries: 5
+  mariadb:
+    container_name: mariadb
+    build: ./srcs/requirements/mariadb
+    ports:
+      - "3306:3306"
+    networks:
+      - my_network
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=ktomoya
+      - MYSQL_PASSWORD=ktomoya
+    volumes:
+      - ./srcs/requirements/mariadb/database:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -u ktomoya -p ktomoya"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   my_network:
