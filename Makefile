@@ -19,7 +19,11 @@ execw:
 execm:
 	docker exec -it mariadb bash
 
-re: down up
+revol:
+	rm -rf srcs/requirements/mariadb/database
+	rm -rf srcs/requirements/wordpress
+
+re: down revol up
 
 # コンテナが動作し続ける限りログの出力を継続する
 log:
