@@ -1,6 +1,6 @@
 FROM debian:bullseye
 
-RUN apt-get update && apt-get install -y php-fpm php-mysql curl
+RUN apt-get update && apt-get install -y php-fpm php-mysql curl sendmail
 # php7.4-fpmは/run/phpを作らない
 RUN mkdir -p /run/php /var/www/html
 
