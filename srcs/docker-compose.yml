@@ -3,7 +3,7 @@ name: inception
 services:
   nginx:
     container_name: nginx
-    build: ./srcs/requirements/nginx
+    build: ./requirements/nginx
     ports:
       - "443:443"
     depends_on:
@@ -11,31 +11,31 @@ services:
     networks:
       - my_network
     volumes:
-      - ./srcs/requirements/wordpress:/var/www/html
+      - ./requirements/wordpress:/var/www/html
 
   wp-php:
     container_name: wp-php
-    build: ./srcs/requirements/wp-php
+    build: ./requirements/wp-php
     depends_on:
       - mariadb
     networks:
       - my_network
     env_file:
-      - srcs/.env
+      - .env
     volumes:
-      - ./srcs/requirements/wordpress:/var/www/html
+      - ./requirements/wordpress:/var/www/html
 
   mariadb:
     container_name: mariadb
-    build: ./srcs/requirements/mariadb
+    build: ./requirements/mariadb
     ports:
       - "3306:3306"
     networks:
       - my_network
     env_file:
-      - srcs/.env
+      - .env
     volumes:
-      - ./srcs/requirements/mariadb/database:/var/lib/mysql
+      - ./requirements/mariadb/database:/var/lib/mysql
 
 networks:
   my_network:
