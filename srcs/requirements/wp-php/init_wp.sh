@@ -14,11 +14,11 @@ if [ ! -n "$(ls -A /var/www/html)" ]; then
 		--dbhost="${DB_HOST}" \
 		--allow-root
 	./wp-cli.phar core install \
-		--url=localhost \
+		--url="${SITE_URL}" \
 		--title=inception \
-		--admin_user="${ADMIN_USER:-admin}" \
-		--admin_password="${ADMIN_PASSWORD:-admin}" \
-		--admin_email="${ADMIN_EMAIL:-admin@admin.com}" \
+		--admin_user="${ADMIN_USER}" \
+		--admin_password="${ADMIN_PASSWORD}" \
+		--admin_email="${ADMIN_EMAIL}" \
 		--allow-root
 fi
 

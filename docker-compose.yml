@@ -25,7 +25,7 @@ services:
       - DB_PASSWORD=user
       - DB_NAME=wordpress
       - DB_HOST=mariadb
-      - SITE_URL=localhost
+      - SITE_URL=localhost:8080
       - ADMIN_USER=ktomoya
       - ADMIN_PASSWORD=ktomoya
       - ADMIN_EMAIL=twbtomoya2@gmail.com
