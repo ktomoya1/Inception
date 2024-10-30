@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "ALTER USER 'root'@'ktomoya' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';" > /docker-entrypoint-initdb.d/init.sql
+echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';" > /docker-entrypoint-initdb.d/init.sql
 
 echo "FLUSH PRIVILEGES;" >> /docker-entrypoint-initdb.d/init.sql
 

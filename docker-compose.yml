@@ -25,7 +25,7 @@ services:
       - DB_PASSWORD=user
       - DB_NAME=wordpress
       - DB_HOST=mariadb
-      - SITE_URL=https://ktomoya
+      - SITE_URL=localhost
       - ADMIN_USER=ktomoya
       - ADMIN_PASSWORD=ktomoya
       - ADMIN_EMAIL=twbtomoya2@gmail.com
@@ -46,11 +46,6 @@ services:
       - MYSQL_PASSWORD=user
     volumes:
       - ./srcs/requirements/mariadb/database:/var/lib/mysql
-    healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -u ktomoya -p ktomoya"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
 networks:
   my_network:
