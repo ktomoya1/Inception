@@ -22,4 +22,4 @@ if [ ! -n "$(ls -A /var/www/html)" ]; then
 		--allow-root
 fi
 
-php-fpm7.4 -F
+exec "$@"

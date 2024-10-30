@@ -9,4 +9,6 @@ COPY ./init_wp.sh .
 
 RUN chmod +x init_wp.sh
 
-CMD ["./init_wp.sh"]
+ENTRYPOINT [ "/init_wp.sh" ]
+
+CMD ["php-fpm7.4", "-F"]

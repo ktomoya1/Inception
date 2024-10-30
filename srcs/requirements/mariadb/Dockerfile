@@ -11,5 +11,4 @@ RUN chmod +x /init_db.sh
 
 ENTRYPOINT [ "/init_db.sh" ]
 
-
 CMD ["mysqld_safe"]
