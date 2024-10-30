@@ -21,8 +21,8 @@ services:
     networks:
       - my_network
     environment:
-      - DB_USER=ktomoya
-      - DB_PASSWORD=ktomoya
+      - DB_USER=user
+      - DB_PASSWORD=user
       - DB_NAME=wordpress
       - DB_HOST=mariadb
       - SITE_URL=localhost
@@ -42,8 +42,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=wordpress
-      - MYSQL_USER=ktomoya
-      - MYSQL_PASSWORD=ktomoya
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
     volumes:
       - ./srcs/requirements/mariadb/database:/var/lib/mysql
     healthcheck:
