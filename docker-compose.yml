@@ -5,7 +5,7 @@ services:
     container_name: nginx
     build: ./srcs/requirements/nginx
     ports:
-      - "8080:80"
+      - "443:443"
     depends_on:
       - wp-php
     networks:
@@ -25,7 +25,7 @@ services:
       - DB_PASSWORD=user
       - DB_NAME=wordpress
       - DB_HOST=mariadb
-      - SITE_URL=localhost:8080
+      - SITE_URL=https://ktomoya
       - ADMIN_USER=ktomoya
       - ADMIN_PASSWORD=ktomoya
       - ADMIN_EMAIL=twbtomoya2@gmail.com
