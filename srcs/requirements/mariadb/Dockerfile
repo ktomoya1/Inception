@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:bullseye-slim
 
 RUN apt-get update && apt-get install -y mariadb-server
 RUN mkdir -p /var/run/mysqld /docker-entrypoint-initdb.d \

@@ -1,5 +1,5 @@
 # 構築ステージを初期化し、ベースイメージを指定する
-FROM debian:bullseye
+FROM debian:bullseye-slim
 
 # nginxのインストール
 RUN apt-get update && apt-get install -y nginx
