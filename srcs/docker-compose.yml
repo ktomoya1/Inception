@@ -8,10 +8,9 @@ services:
       - "443:443"
     depends_on:
       - wp-php
+      - mariadb
     networks:
       - my_network
-    volumes:
-      - ./requirements/wordpress:/var/www/html
 
   wp-php:
     container_name: wp-php
@@ -23,7 +22,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./requirements/wordpress:/var/www/html
+      - ${HOME}/wordpress:/var/www/html
 
   mariadb:
     container_name: mariadb
@@ -35,7 +34,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./requirements/mariadb/database:/var/lib/mysql
+      - ${HOME}/database:/var/lib/mysql
 
 networks:
   my_network:
