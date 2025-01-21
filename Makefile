@@ -18,8 +18,8 @@ execm:
 	docker exec -it mariadb bash
 
 rmvol:
-	sudo rm -rf /home/ktomoya/database
-	sudo rm -rf /home/ktomoya/wordpress
+	sudo rm -rf /home/ktomoya/data/database
+	sudo rm -rf /home/ktomoya/data/wordpress
 
 re: down rmvol up
 

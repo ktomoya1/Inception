@@ -12,7 +12,7 @@ services:
     networks:
       - my_network
     volumes:
-      - ${HOME}/wordpress:/var/www/html
+      - ${VOLUME}/wordpress:/var/www/html
 
   wp-php:
     container_name: wp-php
@@ -24,7 +24,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ${HOME}/wordpress:/var/www/html
+      - ${VOLUME}/wordpress:/var/www/html
 
   mariadb:
     container_name: mariadb
@@ -36,7 +36,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ${HOME}/database:/var/lib/mysql
+      - ${VOLUME}/database:/var/lib/mysql
 
 networks:
   my_network:
