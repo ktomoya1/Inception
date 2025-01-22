@@ -6,6 +6,7 @@ build:
 	docker compose -f $(DOCKER_COMPOSE_FILE) build
 
 up:
+	mkdir -p /home/ktomoya/data
 	mkdir -p /home/ktomoya/data/database /home/ktomoya/data/wordpress
 	docker compose -f $(DOCKER_COMPOSE_FILE) up -d --build
 
